@@ -43,7 +43,13 @@ __exec(FormatedInput* input, Environ* env,
 
 void
 Execution(FormatedInput* input, Environ* env) {
-   char *path = __binPath(env, input);
+   char *path = 0;
+   if (input->datas[0][0] == '.' ||
+       input->datas[0][0] == '/')
+     path = input->datas[0];
+   else
+    path = __binPath(env, input);
+
    if (path == 0) {
       printf("%s : no such command\n", input->datas[0]);
       return ;

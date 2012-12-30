@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdbool.h>
 #include "getRawInput.h"
@@ -20,7 +21,9 @@ main() {
     } else {
      FormatedInput* format = formatInput(rawLine);
      if (format == 0) continue ;
-     Execution(format, &env);
+     Execution(format, &env); 
+     //free(format);
     }
-  }
+  //free(rawLine);
+ }
 }
