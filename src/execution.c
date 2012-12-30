@@ -31,7 +31,7 @@ __exec(FormatedInput* input, Environ* env,
        char *path) {
   pid_t pid = fork();
   if (pid == -1) return ;
-  else if (pid != 0) {
+  else if (pid == 0) {
     execve(path, input->datas, env->envp);
     printf("%s : no such command\n", input->datas[0]);
     exit(EXIT_SUCCESS);

@@ -15,16 +15,12 @@ main() {
   newEnviron(&env);
   while (go == true) {
     char* rawLine = getRawInput();
-    if (rawLine == 0) continue ;
-    FormatedInput* format = formatInput(rawLine);
-    if (format == 0) continue ;
-    Execution(format, &env);
-        
-    /*
- * Get Raw Entry
- * Format Entry
- * Handle the Parsed Entry to Execution
- */
-
+    if (rawLine == 0) {
+       go = false;
+    } else {
+     FormatedInput* format = formatInput(rawLine);
+     if (format == 0) continue ;
+     Execution(format, &env);
+    }
   }
 }
